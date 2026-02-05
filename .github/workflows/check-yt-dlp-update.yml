@@ -2,7 +2,7 @@ name: Check yt-dlp Update
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch:
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
       - name: Get latest yt-dlp version
         id: latest_version
         run: |
-          LATEST_VERSION=$(curl -s "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+          LATEST_VERSION=$(curl -s https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
           echo "version=${LATEST_VERSION}" >> $GITHUB_OUTPUT
           echo "Latest version: ${LATEST_VERSION}"
 
