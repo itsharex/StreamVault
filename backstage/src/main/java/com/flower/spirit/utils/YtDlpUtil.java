@@ -50,14 +50,14 @@ public class YtDlpUtil {
 		command.add("--no-restrict-filenames");
 		command.add("--windows-filenames");
 
-		String[] specialChars = {"#", "\\?", "\\|", "\\<", "\\>", "\\/", "\\\\"};
-
-		for (String charToReplace : specialChars) {
-		    command.add("--replace-in-metadata");
-		    command.add("title");
-		    command.add(charToReplace);
-		    command.add("_");
-		}
+//		String[] specialChars = {
+//			    "#", "\\?", "\\|", "\\<", "\\>", "\\/", "\\\\", 
+//			    "\\*", "\\+", "\\.", "\\^", "\\$", "\\[", "\\]", "\\(", "\\)", "\\{", "\\}", "\\!", "\\~", "\\&", "\\%", "\\@"
+//		};
+		command.add("--replace-in-metadata");
+		command.add("title");
+		command.add("[^\\w\\u4e00-\\u9fa5]"); 
+		command.add("");
 		
 		
 		if (Global.useragent != null && !Global.useragent.trim().isEmpty()) {
