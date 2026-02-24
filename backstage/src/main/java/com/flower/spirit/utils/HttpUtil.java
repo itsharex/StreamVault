@@ -572,20 +572,20 @@ public class HttpUtil {
 
     public static String downBiliFromUrl(List<String> url, String fileName, String savePath) {
     	for(int i=0;i<=url.size();i++) {
-    		logger.info("正在使用节点"+i+"进行下载");
+    		logger.info("正在使用节点"+i+"进行下载,总节点数:"+url.size());
     		try {
     			String downBiliFromUrl = downBiliFromUrl(url.get(i), fileName, savePath,null);
     			if(null != downBiliFromUrl && downBiliFromUrl.equals("0")) {
-    				logger.info("使用节点"+i+"下载成功");
+    				logger.info("使用节点"+i+"下载成功,总节点数:"+url.size());
     				return "0";
     			}else {
-    				logger.info("节点"+i+"下载失败,正在使用下一个节点");
+    				logger.info("节点"+i+"下载失败,正在使用下一个节点,总节点数:"+url.size());
     			}
 			} catch (Exception e) {
-				logger.info("节点"+i+"下载失败,正在使用下一个节点");
+				logger.info("节点"+i+"下载失败,正在使用下一个节点,总节点数:"+url.size());
 			}
     	}
-    	logger.info("所有节点均下载失败");
+    	logger.info("所有节点均下载失败,总节点数:"+url.size());
 		return "1";
 
     }
